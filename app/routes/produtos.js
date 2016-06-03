@@ -26,7 +26,7 @@ module.exports = function(app) {
         connection.end();
     });
 
-    app.get('/produtos/get', function(req, res) {
+    app.get('/produtos/detalhe', function(req, res) {
 
         var connection = app.infra.connectionFactory();
         var produtosBanco = app.infra.produtosBanco(connection);
