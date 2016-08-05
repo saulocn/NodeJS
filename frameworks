@@ -3,3 +3,4 @@ express
 express-load
 body-parser
 express-validator
+nodemon  - Para se inicializar o server, deve-se executar o comando nodemon app que executará o arquivo app.js

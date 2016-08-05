@@ -28,13 +28,12 @@ var salvarProdutos = function(req, res){
 
 
     if(erros){
-        
         res.format({
             html:function(){ 
-                res.render('produtos/form', {errosValidacao:erros, produto:produto});
+                res.status(400).render('produtos/form', {errosValidacao:erros, produto:produto});
             },
             json: function(){
-                res.json(erros);
+                res.status(400).json(erros);
             }
         });
         return;
@@ -51,10 +50,15 @@ var salvarProdutos = function(req, res){
 
 
 
-app.get('/produtos', function(req, res) {
+app.get('/produtos', function(req, res, next) {
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection);
     produtosDAO.lista( function(err, results) {
+
+        if(err){
+            return next(err);
+        }
+
         res.format({
             html:function(){ 
                 res.render("produtos/lista", {
