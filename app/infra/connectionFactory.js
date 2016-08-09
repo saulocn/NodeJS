@@ -6,7 +6,7 @@ function createDBConnection() {
 			host: 'localhost',
 			user: 'root',
 			password: '',
-			database: 'casadocodigo11'
+			database: 'casadocodigo'
 		});
 	} 
 	if(process.env.NODE_ENV == 'test'){
@@ -17,6 +17,17 @@ function createDBConnection() {
 			database: 'casadocodigo_test'
 		});
 	}
+
+	/*if(process.env.NODE_ENV == 'production'){
+		var url = process.env.CLEARDB_DATABASE_URL;
+		var grupos = url.match(/ /);
+		return mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: '',
+			database: 'casadocodigo_test'
+		});
+	}*/
 }
 
 module.exports = function(){
