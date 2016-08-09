@@ -9,6 +9,8 @@ var io = require('socket.io')(http);
 
 app.set('io', io);
 
+//process.env.NODE_ENV = 'production'
+
 //var rotasProdutos = require('./app/routes/produtos')(app);
 
 //app.get('/produtos', function(req, res) {

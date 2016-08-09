@@ -6,7 +6,7 @@ function createDBConnection() {
 			host: 'localhost',
 			user: 'root',
 			password: '',
-			database: 'casadocodigo'
+			database: 'casadocodigo11'
 		});
 	} 
 	if(process.env.NODE_ENV == 'test'){
