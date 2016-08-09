@@ -3,6 +3,12 @@
 //var app = configura();
 //app.set('view engine','ejs');
 var app = require('./config/express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+
+app.set('io', io);
+
 //var rotasProdutos = require('./app/routes/produtos')(app);
 
 //app.get('/produtos', function(req, res) {
@@ -11,6 +17,14 @@ var app = require('./config/express')();
     //res.render("produtos/lista")
 //});
 
-app.listen(3000, function() {
-    console.log("Servidor rodaaaando...");
+
+
+
+var porta = process.env.PORT || 3000;
+var server = http.listen(porta, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Server de app escutando em http://%s:%s', host, port);
 });
+
